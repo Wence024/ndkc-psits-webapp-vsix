@@ -13,8 +13,12 @@ const Login: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await login(email, password);
-      navigate('/dashboard');
+      const user = await login(email, password); // Handle the returned user object
+      if (user && user.role === 'admin') {
+        navigate('/admin');
+      } else {
+        navigate('/dashboard');
+      }
     } catch (err) {
       setError('Failed to log in');
     }

@@ -16,7 +16,7 @@ interface User extends FirebaseUser {
 interface AuthContextType {
   user: User | null;
   loading: boolean;
-  login: (email: string, password: string) => Promise<void>;
+  login: (email: string, password: string) => Promise<User>;
   signup: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
   isAdmin: () => boolean;
@@ -52,7 +52,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const login = async (email: string, password: string) => {
-    await signInWithEmailAndPassword(auth, email, password);
+    const response = await signInWithEmailAndPassword(auth, email, password);
+    const userDoc = await getDoc(doc(db, 'users', response.user.uid));
+    const userData = userDoc.data();
+    return { ...response.user, role: userData?.role }; // Return the user with the role
   };
 
   const logout = () => signOut(auth);
