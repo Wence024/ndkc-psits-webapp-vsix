@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, User, sendEmailVerification, sendPasswordResetEmail } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
+import { rateLimit } from 'firebase-functions/v2/https';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -14,3 +15,31 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+
+export const loginWithEmailAndPassword = (email: string, password: string) =>
+  signInWithEmailAndPassword(auth, email, password);
+
+export const registerWithEmailAndPassword = async (email: string, password: string) => {
+  const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+  await sendEmailVerification(userCredential.user);
+  return userCredential;
+};
+
+export const logoutUser = () => signOut(auth);
+
+export const getCurrentUser = (): Promise<User | null> => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      unsubscribe();
+      resolve(user);
+    }, reject);
+  });
+};
+
+export const sendPasswordResetEmailToUser = (email: string) => sendPasswordResetEmail(auth, email);
+
+// Rate limiting function
+export const rateLimitRequest = rateLimit({
+  maxCalls: 5,
+  timeWindowMinutes: 1,
+});
