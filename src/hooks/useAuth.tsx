@@ -10,7 +10,7 @@ import {
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 
 interface User extends FirebaseUser {
-  role?: string;
+  role?: 'admin' | 'user';
 }
 
 interface AuthContextType {
@@ -20,6 +20,7 @@ interface AuthContextType {
   login: (email: string, password: string) => Promise<void>;
   signup: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
+  isAdmin: () => boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -83,13 +84,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
+  const isAdmin = () => {
+    return user?.role === 'admin';
+  };
+
   const value = {
     user,
     loading,
     error,
     login,
     signup,
-    logout
+    logout,
+    isAdmin
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
