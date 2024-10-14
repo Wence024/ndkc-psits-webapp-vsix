@@ -6,7 +6,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
-import ProtectedRoute from './components/ProtectedRoute';
+import RoleBasedRoute from './components/RoleBasedRoute';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App: React.FC = () => {
@@ -21,9 +21,17 @@ const App: React.FC = () => {
           <Route 
             path="/dashboard" 
             element={
-              <ProtectedRoute>
+              <RoleBasedRoute requiredRole="user">
                 <Dashboard />
-              </ProtectedRoute>
+              </RoleBasedRoute>
+            } 
+          />
+          <Route 
+            path="/admin" 
+            element={
+              <RoleBasedRoute requiredRole="admin">
+                <AdminDashboard />
+              </RoleBasedRoute>
             } 
           />
         </Routes>
