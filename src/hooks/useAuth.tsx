@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { User } from 'firebase/auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
-import { auth, db, loginWithEmailAndPassword, registerWithEmailAndPassword, logoutUser, getCurrentUser, sendPasswordResetEmailToUser, rateLimitRequest } from '../firebase/config';
+import { auth, db, loginWithEmailAndPassword, registerWithEmailAndPassword, logoutUser, getCurrentUser, sendPasswordResetEmailToUser } from '../firebase/config';
 
 interface AuthUser extends User {
   role?: 'admin' | 'user';
@@ -38,7 +38,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   const signup = async (email: string, password: string) => {
-    await rateLimitRequest();
     const { user } = await registerWithEmailAndPassword(email, password);
     await setDoc(doc(db, 'users', user.uid), {
       email: user.email,
@@ -48,7 +47,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const login = async (email: string, password: string) => {
-    await rateLimitRequest();
     const { user } = await loginWithEmailAndPassword(email, password);
     const userDoc = await getDoc(doc(db, 'users', user.uid));
     const userData = userDoc.data();
@@ -67,7 +65,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const sendPasswordResetEmail = async (email: string) => {
-    await rateLimitRequest();
     await sendPasswordResetEmailToUser(email);
   };
 

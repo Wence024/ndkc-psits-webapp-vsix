@@ -1,7 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, User, sendEmailVerification, sendPasswordResetEmail } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
-import { rateLimit } from 'firebase-functions/v2/https';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -37,9 +36,3 @@ export const getCurrentUser = (): Promise<User | null> => {
 };
 
 export const sendPasswordResetEmailToUser = (email: string) => sendPasswordResetEmail(auth, email);
-
-// Rate limiting function
-export const rateLimitRequest = rateLimit({
-  maxCalls: 5,
-  timeWindowMinutes: 1,
-});
