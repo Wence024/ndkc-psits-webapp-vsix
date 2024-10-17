@@ -2,26 +2,19 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
-import ReCAPTCHA from "react-google-recaptcha";
 
 const Signup: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [verificationSent, setVerificationSent] = useState(false);
-  const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null);
   const navigate = useNavigate();
   const { signup } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!recaptchaValue) {
-      setError('Please complete the reCAPTCHA');
-      return;
-    }
     try {
       await signup(email, password);
-      setVerificationSent(true);
+      navigate('/dashboard');
     } catch (err) {
       setError('Failed to create an account');
     }
@@ -33,11 +26,6 @@ const Signup: React.FC = () => {
         <Col md={6} className="mx-auto">
           <h2 className="text-center mb-4">Sign Up</h2>
           {error && <Alert variant="danger">{error}</Alert>}
-          {verificationSent && (
-            <Alert variant="success">
-              A verification email has been sent to your email address. Please verify your email before logging in.
-            </Alert>
-          )}
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
@@ -61,12 +49,7 @@ const Signup: React.FC = () => {
               />
             </Form.Group>
 
-            <ReCAPTCHA
-              sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
-              onChange={(value) => setRecaptchaValue(value)}
-            />
-
-            <Button variant="primary" type="submit" className="w-100 mt-3">
+            <Button variant="primary" type="submit" className="w-100">
               Sign Up
             </Button>
           </Form>

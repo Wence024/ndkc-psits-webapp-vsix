@@ -2,24 +2,18 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
-import ReCAPTCHA from "react-google-recaptcha";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null);
   const navigate = useNavigate();
-  const { login, sendPasswordResetEmail } = useAuth();
+  const { login } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!recaptchaValue) {
-      setError('Please complete the reCAPTCHA');
-      return;
-    }
     try {
-      const user = await login(email, password);
+      const user = await login(email, password); // Handle the returned user object
       if (user && user.role === 'admin') {
         navigate('/admin');
       } else {
@@ -27,20 +21,6 @@ const Login: React.FC = () => {
       }
     } catch (err) {
       setError('Failed to log in');
-    }
-  };
-
-  const handleForgotPassword = async () => {
-    if (!email) {
-      setError('Please enter your email address');
-      return;
-    }
-    try {
-      await sendPasswordResetEmail(email);
-      setError('');
-      alert('Password reset email sent. Check your inbox.');
-    } catch (err) {
-      setError('Failed to send password reset email');
     }
   };
 
@@ -73,18 +53,10 @@ const Login: React.FC = () => {
               />
             </Form.Group>
 
-            <ReCAPTCHA
-              sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
-              onChange={(value) => setRecaptchaValue(value)}
-            />
-
-            <Button variant="primary" type="submit" className="w-100 mt-3">
+            <Button variant="primary" type="submit" className="w-100">
               Login
             </Button>
           </Form>
-          <Button variant="link" onClick={handleForgotPassword} className="mt-2">
-            Forgot Password?
-          </Button>
         </Col>
       </Row>
     </Container>
