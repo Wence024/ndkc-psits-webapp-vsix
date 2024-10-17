@@ -5,7 +5,7 @@ import { useAuth } from '../hooks/useAuth';
 import "../styles/Auth.css";
 
 const Signup: React.FC = () => {
-  const { signup, updateName } = useAuth();
+  const { signup } = useAuth();
   
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -27,7 +27,6 @@ const Signup: React.FC = () => {
       setError('');
       setLoading(true);
       await signup(email, password);
-      await updateName(name);
       navigate('/login');
     } catch (error) {
       console.error("Signup error:", error);

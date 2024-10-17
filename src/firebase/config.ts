@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, sendPasswordResetEmail, User } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
@@ -14,3 +14,16 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+
+export const loginWithEmailAndPassword = (email: string, password: string) => 
+  signInWithEmailAndPassword(auth, email, password);
+
+export const registerWithEmailAndPassword = (email: string, password: string) => 
+  createUserWithEmailAndPassword(auth, email, password);
+
+export const logoutUser = () => signOut(auth);
+
+export const getCurrentUser = (): User | null => auth.currentUser;
+
+export const sendPasswordResetEmailToUser = (email: string) => 
+  sendPasswordResetEmail(auth, email);
