@@ -5,7 +5,8 @@ import {
   signInWithEmailAndPassword, 
   signOut, 
   onAuthStateChanged,
-  User as FirebaseUser
+  User as FirebaseUser,
+  updateProfile
 } from 'firebase/auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 
@@ -18,6 +19,7 @@ interface AuthContextType {
   loading: boolean;
   login: (email: string, password: string) => Promise<User>;
   signup: (email: string, password: string) => Promise<void>;
+  updateName: (name: string) => Promise<void>;
   logout: () => Promise<void>;
   isAdmin: () => boolean;
 }
@@ -58,6 +60,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return { ...response.user, role: userData?.role }; // Return the user with the role
   };
 
+  const updateName = async (name: string) => {
+    await updateProfile(auth.currentUser, { displayName: name });
+  }
+
   const logout = () => signOut(auth);
 
   const isAdmin = () => {
@@ -69,6 +75,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     loading,
     login,
     signup,
+    updateName,
     logout,
     isAdmin
   };
