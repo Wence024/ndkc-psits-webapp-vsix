@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
+import { User } from '../../types/User';
 
 interface UserModalProps {
   show: boolean;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Table, Button } from 'react-bootstrap';
+import { Event } from '../../types/Event';
 
 interface EventTableProps {
   events: Event[];

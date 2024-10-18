@@ -1,5 +1,6 @@
 import React from 'react';
 import { Table, Button } from 'react-bootstrap';
+import { User } from '../../types/User';
 
 interface UserTableProps {
   users: User[];

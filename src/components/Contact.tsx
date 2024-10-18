@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
 import '../styles/Contact.css';
 

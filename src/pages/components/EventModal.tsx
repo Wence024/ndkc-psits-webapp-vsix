@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
+import { Event } from '../../types/Event';
 
 interface EventModalProps {
   show: boolean;
