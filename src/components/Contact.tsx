@@ -7,6 +7,7 @@ interface FormData {
   name: string;
   email: string;
   message: string;
+  [key: string]: string; // Add this index signature
 }
 
 const Contact: React.FC = () => {
