@@ -27,29 +27,29 @@ const Dashboard: React.FC = () => {
   }, []);
 
   return (
-    <Container className="mt-5">
-      <Row>
+    <Container className="py-5">
+      <Row className="mb-4">
         <Col>
-          <h1 className="text-center mb-4 text-primary">Dashboard</h1>
+          <h1 className="text-primary mb-4">Dashboard</h1>
           <Card className="bg-card text-card-foreground">
             <Card.Body>
               <Card.Title className="text-primary">Welcome, {user?.email}</Card.Title>
-              <Card.Text>
+              <Card.Text className="text-accent">
                 Role: {user?.role === 'admin' ? 'Admin' : 'User'}
               </Card.Text>
             </Card.Body>
           </Card>
         </Col>
       </Row>
-      <Row className="mt-4">
+      <Row>
         <Col>
-          <h2 className="text-primary">Upcoming Events</h2>
+          <h2 className="text-primary mb-3">Upcoming Events</h2>
           {events.map(event => (
             <Card key={event.id} className="mb-3 bg-card text-card-foreground">
               <Card.Body>
                 <Card.Title className="text-primary">{event.title}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">{event.date}</Card.Subtitle>
-                <Card.Text>{event.description}</Card.Text>
+                <Card.Subtitle className="mb-2 text-accent">{event.date}</Card.Subtitle>
+                <Card.Text className="text-accent">{event.description}</Card.Text>
               </Card.Body>
             </Card>
           ))}

@@ -91,14 +91,14 @@ const AdminDashboard: React.FC = () => {
   };
 
   return (
-    <Container>
-      <h1 className="my-4">Admin Dashboard</h1>
+    <Container className="py-5">
+      <h1 className="text-primary mb-4">Admin Dashboard</h1>
       
-      <Row className="mb-4">
+      <Row className="mb-5">
         <Col>
-          <h2>Users</h2>
-          <Button onClick={openSignupPage}>Add User</Button>
-          <Table striped bordered hover>
+          <h2 className="text-primary mb-3">Users</h2>
+          <Button onClick={openSignupPage} className="mb-3">Add User</Button>
+          <Table striped bordered hover variant="dark">
             <thead>
               <tr>
                 <th>Email</th>
@@ -112,7 +112,7 @@ const AdminDashboard: React.FC = () => {
                   <td>{user.email}</td>
                   <td>{user.role}</td>
                   <td>
-                    <Button variant="info" onClick={() => { setCurrentUser(user); setShowUserModal(true); }}>Edit</Button>
+                    <Button variant="info" onClick={() => { setCurrentUser(user); setShowUserModal(true); }} className="me-2">Edit</Button>
                     <Button variant="danger" onClick={() => deleteUser(user.id)}>Delete</Button>
                   </td>
                 </tr>
@@ -124,9 +124,9 @@ const AdminDashboard: React.FC = () => {
 
       <Row>
         <Col>
-          <h2>Events</h2>
-          <Button onClick={() => { setCurrentEvent(null); setShowEventModal(true); }}>Add Event</Button>
-          <Table striped bordered hover>
+          <h2 className="text-primary mb-3">Events</h2>
+          <Button onClick={() => { setCurrentEvent(null); setShowEventModal(true); }} className="mb-3">Add Event</Button>
+          <Table striped bordered hover variant="dark">
             <thead>
               <tr>
                 <th>Title</th>
@@ -142,7 +142,7 @@ const AdminDashboard: React.FC = () => {
                   <td>{event.date}</td>
                   <td>{event.description}</td>
                   <td>
-                    <Button variant="info" onClick={() => { setCurrentEvent(event); setShowEventModal(true); }}>Edit</Button>
+                    <Button variant="info" onClick={() => { setCurrentEvent(event); setShowEventModal(true); }} className="me-2">Edit</Button>
                     <Button variant="danger" onClick={() => deleteEvent(event.id)}>Delete</Button>
                   </td>
                 </tr>
@@ -169,7 +169,7 @@ const AdminDashboard: React.FC = () => {
                 <option value="admin">Admin</option>
               </Form.Control>
             </Form.Group>
-            <Button type="submit">Save</Button>
+            <Button type="submit" className="mt-3">Save</Button>
           </Form>
         </Modal.Body>
       </Modal>
@@ -192,7 +192,7 @@ const AdminDashboard: React.FC = () => {
               <Form.Label>Description</Form.Label>
               <Form.Control as="textarea" name="description" required defaultValue={currentEvent?.description} />
             </Form.Group>
-            <Button type="submit">Save</Button>
+            <Button type="submit" className="mt-3">Save</Button>
           </Form>
         </Modal.Body>
       </Modal>
