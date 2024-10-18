@@ -112,7 +112,7 @@ const AdminDashboard: React.FC = () => {
                   <td>{user.email}</td>
                   <td>{user.role}</td>
                   <td>
-                    <Button variant="info" onClick={() => { setCurrentUser(user); setShowUserModal(true); }} className="me-2">Edit</Button>
+                    <Button variant="info" onClick={() => { setCurrentUser(user); setShowUserModal(true); }} className="me-2 mb-1">Edit</Button>
                     <Button variant="danger" onClick={() => deleteUser(user.id)}>Delete</Button>
                   </td>
                 </tr>
@@ -142,7 +142,7 @@ const AdminDashboard: React.FC = () => {
                   <td>{event.date}</td>
                   <td>{event.description}</td>
                   <td>
-                    <Button variant="info" onClick={() => { setCurrentEvent(event); setShowEventModal(true); }} className="me-2">Edit</Button>
+                    <Button variant="info" onClick={() => { setCurrentEvent(event); setShowEventModal(true); }} className="me-2 mb-1">Edit</Button>
                     <Button variant="danger" onClick={() => deleteEvent(event.id)}>Delete</Button>
                   </td>
                 </tr>
