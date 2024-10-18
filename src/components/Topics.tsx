@@ -46,10 +46,10 @@ const Topics: React.FC = () => {
 
   return (
     <Container fluid className="topics-container">
-      <Row className="text-center mb-5">
+      <Row className="text-center mb-4">
         <Col>
-          <h2 className="text-light">Club Activities</h2>
-          <p className="subtitle">Explore our diverse range of topics and events.</p>
+          <h1 className="text-light">Club Topics</h1>
+          <h2 className="subtitle">Explore our diverse range of topics and events.</h2>
         </Col>
       </Row>
       <Row>
