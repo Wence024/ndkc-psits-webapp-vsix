@@ -92,11 +92,11 @@ const AdminDashboard: React.FC = () => {
 
   return (
     <Container className="py-5">
-      <h1 className="text-primary mb-4">Admin Dashboard</h1>
+      <h1 className="h1 text-accent mb-4">Admin Dashboard</h1>
       
       <Row className="mb-5">
         <Col>
-          <h2 className="text-primary mb-3">Users</h2>
+          <h2 className="h3 text-accent mb-3">Users</h2>
           <Button onClick={openSignupPage} className="mb-3">Add User</Button>
           <Table striped bordered hover variant="dark">
             <thead>
@@ -124,7 +124,7 @@ const AdminDashboard: React.FC = () => {
 
       <Row>
         <Col>
-          <h2 className="text-primary mb-3">Events</h2>
+          <h2 className="h3 text-accent mb-3">Events</h2>
           <Button onClick={() => { setCurrentEvent(null); setShowEventModal(true); }} className="mb-3">Add Event</Button>
           <Table striped bordered hover variant="dark">
             <thead>
