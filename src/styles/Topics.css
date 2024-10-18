@@ -1,0 +1,87 @@
+.topics-container {
+  background: linear-gradient(135deg, #1e1e1e, #121212);
+  color: #e0e0e0;
+  min-height: 100vh;
+  padding: 40px;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: #b0b0b0; /* Light gray for subtitle text */
+}
+
+.card {
+  background-color: #1e1e1e;
+  border: 1px solid #444;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-img {
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-title {
+  color: #f0f0f0;
+}
+
+.card-text {
+  color: #b0b0b0;
+}
+
+.btn-primary {
+  background-color: #00bcd4;
+  border-color: #00bcd4;
+}
+
+.btn-primary:hover {
+  background-color: #0097a7;
+  border-color: #0097a7;
+}
+
+.custom-modal .modal-content {
+  background-color: #1e1e1e; /* Match card background */
+  border: 1px solid #444; /* Match card border */
+  border-radius: 8px; /* Match card border radius */
+}
+
+.custom-modal .modal-header {
+  border-bottom: 1px solid #444; /* Match card border */
+  background-color: #1e1e1e; /* Match card background */
+}
+
+.custom-modal .modal-body {
+  color: #e0e0e0; /* Match card text color */
+}
+
+.custom-modal .modal-footer {
+  border-top: 1px solid #444; /* Match card border */
+  background-color: #1e1e1e; /* Match card background */
+}
+
+.custom-modal .btn-primary {
+  background-color: #00bcd4; /* Match button color */
+  border-color: #00bcd4; /* Match button border */
+}
+
+.custom-modal .btn-primary:hover {
+  background-color: #0097a7; /* Match button hover color */
+  border-color: #0097a7; /* Match button hover border */
+}
+
+.custom-modal .modal-img {
+  height: 180px; /* Match card image height */
+  object-fit: cover; /* Match card image fit */
+}
+
+@media (max-width: 576px) {
+  .card-img,
+  .modal-img {
+    height: 120px;
+  }
+}

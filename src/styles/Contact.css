@@ -1,0 +1,58 @@
+.contact-container {
+  padding: 40px;
+  background: linear-gradient(135deg, #1e1e1e, #121212); /* Dark gradient background */
+  color: #e0e0e0; /* Light text color */
+}
+
+.contact-form {
+  background: #1e1e1e; /* Dark form background */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Enhanced shadow for modern look */
+}
+
+.contact-form .form-label {
+  color: #00bcd4; /* Accent color for labels */
+}
+
+.contact-form .form-control {
+  background: #333; /* Dark input background */
+  color: #e0e0e0; /* Light text color for inputs */
+  border: 1px solid #444; /* Border color */
+}
+
+.contact-form .form-control::placeholder {
+  color: #888; /* Placeholder text color */
+}
+
+.contact-form .btn-primary {
+  background-color: #00bcd4; /* Accent color for button */
+  border: none;
+}
+
+.contact-form .btn-primary:hover {
+  background-color: #0097a7; /* Darker shade on hover */
+}
+
+.alert {
+  background-color: #00bcd4; /* Accent color for alert */
+  color: #121212; /* Dark text color */
+}
+
+.map-col {
+  padding: 0 15px;
+}
+
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+}
+
+.map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

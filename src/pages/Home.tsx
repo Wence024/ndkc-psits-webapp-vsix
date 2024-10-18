@@ -1,23 +1,39 @@
+import About from '../components/About';
+import Topics from '../components/Topics';
+import Contact from '../components/Contact';
 import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import '../styles/Home.css';
 
 const Home: React.FC = () => {
   return (
     <Container className="mt-5">
-      <Row>
-        <Col>
-          <h1 className="text-center mb-4 text-primary">Welcome to Our Club</h1>
-          <Card className="bg-card text-card-foreground">
-            <Card.Body>
-              <Card.Title className="text-primary">About Us</Card.Title>
-              <Card.Text>
-                We are a community of enthusiasts dedicated to sharing knowledge and experiences.
-                Join us to connect with like-minded individuals and participate in exciting events!
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
+      <Container>
+          <div className="hero-container">
+          <div className="hero-content">
+            <div className="hero-text">
+              <h1 className="hero-title">Welcome to Our Club</h1>
+              <p className="hero-subtitle lead">
+                Empowering the next generation of IT professionals
+              </p>
+              <div className="hero-buttons">
+                <Link to="/about" className="btn btn-primary btn-lg">About</Link>
+              </div>
+            </div>
+            <div className="hero-image-placeholder"></div>
+          </div>
+        </div>
+      </Container>
+      <Container>
+        <About/>
+      </Container>
+      <Container>
+        <Topics/>
+      </Container>
+      <Container>
+        <Contact/>
+      </Container>
     </Container>
   );
 };
