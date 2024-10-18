@@ -45,6 +45,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const signup = async (email: string, password: string) => {
     const { user } = await registerWithEmailAndPassword(email, password);
+    // Set the role to 'user' by default when creating a new user
     await setDoc(doc(db, 'users', user.uid), {
       email: user.email,
       role: 'user'
