@@ -49,9 +49,9 @@ const Contact: React.FC = () => {
   return (
     <Container fluid className="contact-container">
       <Row className="justify-content-center">
-        <h1 className="text-center">Contact Us</h1>
-        <h2 className="subtitle text-center mb-4">We'd love to hear from you. Reach out to us below.</h2>
-        <Col md={8} lg={6} className="contact-form-col">
+        <Col md={8} lg={6}>
+          <h2 className="text-center text-light mb-2">Contact Us</h2>
+          <p className="subtitle text-center mb-4">We'd love to hear from you. Reach out to us below.</p>
           {showAlert && (
             <Alert variant={showAlert.type} onClose={() => setShowAlert(null)} dismissible>
               {showAlert.message}

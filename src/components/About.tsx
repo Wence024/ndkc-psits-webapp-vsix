@@ -36,12 +36,14 @@ const About: React.FC = () => {
 
   return (
     <Container fluid className="about-container">
-      <Col className="text-center">
-        <h1 className="text-light">About</h1>
-        <h2 className="subtitle mb-4">Learn more about our mission and values.</h2>
-      </Col>
+      <Row className="text-center mb-4">
+        <Col>
+          <h2 className="text-light">About Us</h2>
+          <p className="subtitle mb-4">Learn more about our mission and values.</p>
+        </Col>
+      </Row>
       <section className="statement-of-purpose text-center">
-        <h2>Our Purpose</h2>
+        <h3>Our Purpose</h3>
         <p>
           Our club is dedicated to fostering a community of learners and
           innovators in the field of Information Technology. We aim to provide
@@ -53,7 +55,7 @@ const About: React.FC = () => {
       </section>
 
       <section className="our-team-section">
-        <h2 className="text-center">Meet Our Team</h2>
+        <h3 className="text-center mb-4">Meet Our Team</h3>
         <Row className="our-team">
           {teamMembers.map((member, index) => (
             <Col md={3} key={index} className="team-card-wrapper">

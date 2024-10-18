@@ -48,8 +48,8 @@ const Topics: React.FC = () => {
     <Container fluid className="topics-container">
       <Row className="text-center mb-4">
         <Col>
-          <h1 className="text-light">Club Topics</h1>
-          <h2 className="subtitle">Explore our diverse range of topics and events.</h2>
+          <h2 className="text-light">Club Topics</h2>
+          <p className="subtitle mb-4">Explore our diverse range of topics and events.</p>
         </Col>
       </Row>
       <Row>
