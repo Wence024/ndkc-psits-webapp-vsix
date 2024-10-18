@@ -30,10 +30,10 @@ const Dashboard: React.FC = () => {
     <Container className="mt-5">
       <Row>
         <Col>
-          <h1 className="text-center mb-4">Dashboard</h1>
-          <Card>
+          <h1 className="text-center mb-4 text-primary">Dashboard</h1>
+          <Card className="bg-card text-card-foreground">
             <Card.Body>
-              <Card.Title>Welcome, {user?.email}</Card.Title>
+              <Card.Title className="text-primary">Welcome, {user?.email}</Card.Title>
               <Card.Text>
                 Role: {user?.role === 'admin' ? 'Admin' : 'User'}
               </Card.Text>
@@ -43,11 +43,11 @@ const Dashboard: React.FC = () => {
       </Row>
       <Row className="mt-4">
         <Col>
-          <h2>Upcoming Events</h2>
+          <h2 className="text-primary">Upcoming Events</h2>
           {events.map(event => (
-            <Card key={event.id} className="mb-3">
+            <Card key={event.id} className="mb-3 bg-card text-card-foreground">
               <Card.Body>
-                <Card.Title>{event.title}</Card.Title>
+                <Card.Title className="text-primary">{event.title}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">{event.date}</Card.Subtitle>
                 <Card.Text>{event.description}</Card.Text>
               </Card.Body>
