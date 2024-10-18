@@ -86,6 +86,10 @@ const AdminDashboard: React.FC = () => {
     fetchEvents();
   };
 
+  const openSignupPage = () => {
+    window.open('/signup', '_blank'); // Opens the signup page in a new tab
+  };
+
   return (
     <Container>
       <h1 className="my-4">Admin Dashboard</h1>
@@ -93,7 +97,7 @@ const AdminDashboard: React.FC = () => {
       <Row className="mb-4">
         <Col>
           <h2>Users</h2>
-          <Button onClick={() => { setCurrentUser(null); setShowUserModal(true); }}>Add User</Button>
+          <Button onClick={openSignupPage}>Add User</Button>
           <Table striped bordered hover>
             <thead>
               <tr>
